@@ -1,0 +1,8 @@
+[
+  {
+    "ts": "2025-11-09T01:55:38.081966",
+    "alert_id": "ALRT_72500",
+    "query": "Context: Alert ALRT_72500 \u2014 Detected delay for shipment SHP1006 at Retail_Delhi\n\nQuestion: wHY DELAYED?",
+    "assistant": "I could not find any specific information regarding the reason for the delay of shipment SHP1006 at Retail_Delhi. It may be necessary to check with the logistics team or other sources for further details."
+  }
+]

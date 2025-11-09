@@ -1,0 +1,90 @@
+[
+  {
+    "alert_id": "ALRT_74928",
+    "shipment_id": "SHP1001",
+    "summary": "Detected delay for shipment SHP1001 at WH_Bangalore",
+    "created_at": "2025-11-07T10:44:07.304046",
+    "severity": "High",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_72500",
+    "shipment_id": "SHP1006",
+    "summary": "Detected delay for shipment SHP1006 at Retail_Delhi",
+    "created_at": "2025-11-07T10:44:07.324023",
+    "severity": "High",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_28557",
+    "shipment_id": "SHP1012",
+    "summary": "Detected delay for shipment SHP1012 at WH_Bangalore",
+    "created_at": "2025-11-07T10:44:07.351022",
+    "severity": "Medium",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_85593",
+    "shipment_id": "SHP1013",
+    "summary": "Detected delay for shipment SHP1013 at Factory_01",
+    "created_at": "2025-11-07T10:44:07.376020",
+    "severity": "High",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_67340",
+    "shipment_id": "SHP1016",
+    "summary": "Detected delay for shipment SHP1016 at Retail_Delhi",
+    "created_at": "2025-11-07T10:44:07.399022",
+    "severity": "Low",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_56338",
+    "shipment_id": "SHP1018",
+    "summary": "Detected delay for shipment SHP1018 at Factory_01",
+    "created_at": "2025-11-07T10:44:07.422020",
+    "severity": "Medium",
+    "status": "Acknowledged"
+  },
+  {
+    "alert_id": "ALRT_10576",
+    "shipment_id": "SHP1001",
+    "summary": "Detected delay for shipment SHP1001 at WH_Bangalore",
+    "created_at": "2025-11-07T10:45:07.759434",
+    "severity": "High",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_50014",
+    "shipment_id": "SHP1003",
+    "summary": "Detected delay for shipment SHP1003 at Port_NaviMumbai",
+    "created_at": "2025-11-07T10:45:07.789270",
+    "severity": "Low",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_80775",
+    "shipment_id": "SHP1006",
+    "summary": "Detected delay for shipment SHP1006 at Retail_Delhi",
+    "created_at": "2025-11-07T10:45:07.813968",
+    "severity": "High",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_38782",
+    "shipment_id": "SHP1013",
+    "summary": "Detected delay for shipment SHP1013 at Factory_01",
+    "created_at": "2025-11-07T10:45:07.837626",
+    "severity": "High",
+    "status": "Active"
+  },
+  {
+    "alert_id": "ALRT_31678",
+    "shipment_id": "SHP1001",
+    "summary": "Detected delay for shipment SHP1001 at WH_Bangalore",
+    "created_at": "2025-11-07T14:43:02.561052",
+    "severity": "High",
+    "status": "Active"
+  }
+]

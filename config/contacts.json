@@ -1,0 +1,11 @@
+{
+  "smtp": {
+    "host": "smtp.hostinger.com",
+    "port": 587,
+    "username": "ssicommunityadmin@onlinestudysmart.com",
+    "password": "Hirusept@1997",
+    "from": "ssicommunityadmin@onlinestudysmart.com",
+    "use_tls": true
+  },
+  "contacts": ["hiranmoy.goswami17@gmail.com", "hirugoswami2015@gmial.com"]
+}

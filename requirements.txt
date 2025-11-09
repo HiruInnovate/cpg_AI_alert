@@ -1,0 +1,25 @@
+streamlit
+# --- LangChain Core Packages ---
+langchain
+langchain-community
+langchain-openai
+
+# --- Vector Database ---
+chromadb
+langchain-chroma
+
+# --- Evaluation ---
+ragas
+openai
+tiktoken
+openai
+pandas
+numpy
+python-dotenv==1.0.0
+plotly==5.16.1
+tqdm
+pydantic
+python-multipart
+deepeval
+sentence-transformers
+torch

@@ -1,0 +1,86 @@
+[
+  {
+    "run_id": "RCA_ReAct_20251107144139473784",
+    "agent": "RCA_ReAct",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "RCA_ReAct_20251107144303819048",
+    "agent": "RCA_ReAct",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "RCA_20251107104933661930",
+    "agent": "RCA",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "RCA_20251107105208785540",
+    "agent": "RCA",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "RCA_20251107110426203865",
+    "agent": "RCA",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "RCA_20251107111026399506",
+    "agent": "RCA",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "Impact_20251107104933673930",
+    "agent": "Impact",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "Impact_20251107105208799450",
+    "agent": "Impact",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "Impact_20251107110426218394",
+    "agent": "Impact",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "Impact_20251107111026416259",
+    "agent": "Impact",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "Impact_20251107144139499725",
+    "agent": "Impact",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  },
+  {
+    "run_id": "Impact_20251107144303841046",
+    "agent": "Impact",
+    "grounding_score": 0.0,
+    "hallucination_rate": 100.0,
+    "notes": "approximate heuristic (RAGAS not available)"
+  }
+]

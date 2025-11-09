@@ -1,0 +1,542 @@
+[
+  {
+    "id": "social_0",
+    "post": "BlueDart still recovering from yesterday\u2019s rain backlog. #logisticsupdate",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T08:53:16.358431Z",
+    "location": "Navi Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_1",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T05:53:16.358461Z",
+    "location": "Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_2",
+    "post": "Safexpress diverted our shipments due to flooding, new ETA 2 days. #mumbairain",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-07T00:53:16.358474Z",
+    "location": "Navi Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_3",
+    "post": "Factory_01 dispatches queued for 5 hours due to traffic jam. #supplychaindisruption",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T16:53:16.358486Z",
+    "location": "Bangalore",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_4",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "driver_raj",
+    "timestamp": "2025-11-04T10:53:16.358497Z",
+    "location": "Navi Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_5",
+    "post": "BlueDart trying night deliveries again \u2014 hope this fixes backlog! #logisticsnews",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-06T17:53:16.358509Z",
+    "location": "Bangalore",
+    "carrier": "DTDC",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_6",
+    "post": "BlueDart trying night deliveries again \u2014 hope this fixes backlog! #logisticsnews",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-06T05:53:16.358714Z",
+    "location": "Delhi",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_7",
+    "post": "Stuck near Mumbai port for 3 hours due to container backlog! #shippingdelay",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T18:53:16.358736Z",
+    "location": "Delhi",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_8",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "driver_raj",
+    "timestamp": "2025-11-05T18:53:16.358751Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_9",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-05T10:53:16.358762Z",
+    "location": "Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_10",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T09:53:16.358774Z",
+    "location": "Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_11",
+    "post": "Fuel price hike hitting small carriers badly \u2014 fewer trucks on road. #transport",
+    "user": "driver_raj",
+    "timestamp": "2025-11-05T00:53:16.358784Z",
+    "location": "Bangalore",
+    "carrier": "Safexpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_12",
+    "post": "Retail stores running low on inventory due to delayed trucks. #stockout",
+    "user": "driver_raj",
+    "timestamp": "2025-11-04T14:53:16.358795Z",
+    "location": "Navi Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_13",
+    "post": "Stuck near Mumbai port for 3 hours due to container backlog! #shippingdelay",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T00:53:16.358805Z",
+    "location": "Delhi",
+    "carrier": "BlueDart",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_14",
+    "post": "Retail stores running low on inventory due to delayed trucks. #stockout",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-06T02:53:16.358815Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_15",
+    "post": "Heavy rains again! Our trucks can\u2019t move past Kurla highway. #Mumbai #logistics",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-04T06:53:16.358824Z",
+    "location": "Delhi",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_16",
+    "post": "Fuel price hike hitting small carriers badly \u2014 fewer trucks on road. #transport",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T01:53:16.358834Z",
+    "location": "Delhi",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_17",
+    "post": "Safexpress diverted our shipments due to flooding, new ETA 2 days. #mumbairain",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-04T13:53:16.358844Z",
+    "location": "Delhi",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_18",
+    "post": "Warehouse repairs in Bangalore slowing down packaging operations. #CPG #warehouse",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-05T22:53:16.358872Z",
+    "location": "Navi Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_19",
+    "post": "Safexpress diverted our shipments due to flooding, new ETA 2 days. #mumbairain",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T14:53:16.358883Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_20",
+    "post": "Heavy rains again! Our trucks can\u2019t move past Kurla highway. #Mumbai #logistics",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-04T15:53:16.358892Z",
+    "location": "Bangalore",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_21",
+    "post": "Retail stores running low on inventory due to delayed trucks. #stockout",
+    "user": "driver_raj",
+    "timestamp": "2025-11-05T14:53:16.358902Z",
+    "location": "Navi Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_22",
+    "post": "Warehouse repairs in Bangalore slowing down packaging operations. #CPG #warehouse",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-04T16:53:16.358913Z",
+    "location": "Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_23",
+    "post": "Fuel price hike hitting small carriers badly \u2014 fewer trucks on road. #transport",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-05T19:53:16.358925Z",
+    "location": "Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_24",
+    "post": "Warehouse repairs in Bangalore slowing down packaging operations. #CPG #warehouse",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T04:53:16.358938Z",
+    "location": "Bangalore",
+    "carrier": "EcomExpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_25",
+    "post": "BlueDart trying night deliveries again \u2014 hope this fixes backlog! #logisticsnews",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-05T20:53:16.358950Z",
+    "location": "Bangalore",
+    "carrier": "Safexpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_26",
+    "post": "Retail stores running low on inventory due to delayed trucks. #stockout",
+    "user": "driver_raj",
+    "timestamp": "2025-11-04T21:53:16.358962Z",
+    "location": "Mumbai",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_27",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-07T06:53:16.358975Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_28",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-06T03:53:16.358987Z",
+    "location": "Navi Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_29",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-05T17:53:16.358999Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_30",
+    "post": "Drivers on strike today in Delhi, all dispatches halted. #delivery #delay",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-04T16:53:16.359011Z",
+    "location": "Delhi",
+    "carrier": "Safexpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_31",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-06T12:53:16.359022Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_32",
+    "post": "Traffic jam outside Factory_01, dispatch trucks waiting since morning. #supplychain",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T02:53:16.359032Z",
+    "location": "Navi Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_33",
+    "post": "Truckers reporting long waits at Delhi border due to inspection drives. #delay",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-04T06:53:16.359043Z",
+    "location": "Mumbai",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_34",
+    "post": "BlueDart still recovering from yesterday\u2019s rain backlog. #logisticsupdate",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-06T22:53:16.359055Z",
+    "location": "Navi Mumbai",
+    "carrier": "Safexpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_35",
+    "post": "EcomExpress fleet downtime today \u2014 shipments delayed till evening. #deliveryupdate",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-07T02:53:16.359064Z",
+    "location": "Delhi",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_36",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-05T15:53:16.359074Z",
+    "location": "Navi Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_37",
+    "post": "EcomExpress fleet downtime today \u2014 shipments delayed till evening. #deliveryupdate",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T22:53:16.359085Z",
+    "location": "Bangalore",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_38",
+    "post": "Truckers reporting long waits at Delhi border due to inspection drives. #delay",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-05T20:53:16.359097Z",
+    "location": "Bangalore",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_39",
+    "post": "Fuel price hike hitting small carriers badly \u2014 fewer trucks on road. #transport",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-06T04:53:16.359106Z",
+    "location": "Delhi",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_40",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "driver_raj",
+    "timestamp": "2025-11-05T22:53:16.359116Z",
+    "location": "Bangalore",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_41",
+    "post": "BlueDart trying night deliveries again \u2014 hope this fixes backlog! #logisticsnews",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-04T13:53:16.359126Z",
+    "location": "Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_42",
+    "post": "EcomExpress fleet downtime today \u2014 shipments delayed till evening. #deliveryupdate",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T17:53:16.359136Z",
+    "location": "Delhi",
+    "carrier": "BlueDart",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_43",
+    "post": "Drivers on strike today in Delhi, all dispatches halted. #delivery #delay",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-04T11:53:16.359146Z",
+    "location": "Navi Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_44",
+    "post": "Safexpress diverted our shipments due to flooding, new ETA 2 days. #mumbairain",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-04T21:53:16.359155Z",
+    "location": "Navi Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_45",
+    "post": "Factory_01 dispatches queued for 5 hours due to traffic jam. #supplychaindisruption",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-06T19:53:16.359166Z",
+    "location": "Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_46",
+    "post": "Fuel price hike hitting small carriers badly \u2014 fewer trucks on road. #transport",
+    "user": "driver_raj",
+    "timestamp": "2025-11-04T07:53:16.359176Z",
+    "location": "Navi Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_47",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-06T00:53:16.359186Z",
+    "location": "Bangalore",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_48",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-05T21:53:16.359196Z",
+    "location": "Mumbai",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_49",
+    "post": "Drivers on strike today in Delhi, all dispatches halted. #delivery #delay",
+    "user": "driver_raj",
+    "timestamp": "2025-11-07T04:53:16.359220Z",
+    "location": "Navi Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_50",
+    "post": "Stuck near Mumbai port for 3 hours due to container backlog! #shippingdelay",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-07T06:53:16.359230Z",
+    "location": "Mumbai",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_51",
+    "post": "Retail stores running low on inventory due to delayed trucks. #stockout",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-04T06:53:16.359240Z",
+    "location": "Delhi",
+    "carrier": "EcomExpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_52",
+    "post": "Safexpress diverted our shipments due to flooding, new ETA 2 days. #mumbairain",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-04T16:53:16.359249Z",
+    "location": "Bangalore",
+    "carrier": "DTDC",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_53",
+    "post": "BlueDart still recovering from yesterday\u2019s rain backlog. #logisticsupdate",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-04T21:53:16.359258Z",
+    "location": "Bangalore",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_54",
+    "post": "Stuck near Mumbai port for 3 hours due to container backlog! #shippingdelay",
+    "user": "logistics_guy",
+    "timestamp": "2025-11-05T10:53:16.359268Z",
+    "location": "Bangalore",
+    "carrier": "EcomExpress",
+    "sentiment": "neutral"
+  },
+  {
+    "id": "social_55",
+    "post": "Fuel price hike hitting small carriers badly \u2014 fewer trucks on road. #transport",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-06T18:53:16.359277Z",
+    "location": "Navi Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_56",
+    "post": "Safexpress diverted our shipments due to flooding, new ETA 2 days. #mumbairain",
+    "user": "driver_raj",
+    "timestamp": "2025-11-06T05:53:16.359287Z",
+    "location": "Mumbai",
+    "carrier": "BlueDart",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_57",
+    "post": "DTDC staff protest affecting package movements in Bangalore. #warehouseissues",
+    "user": "warehouse_ops",
+    "timestamp": "2025-11-04T17:53:16.359296Z",
+    "location": "Delhi",
+    "carrier": "Safexpress",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_58",
+    "post": "Stuck near Mumbai port for 3 hours due to container backlog! #shippingdelay",
+    "user": "cpg_analyst",
+    "timestamp": "2025-11-06T18:53:16.359306Z",
+    "location": "Bangalore",
+    "carrier": "DTDC",
+    "sentiment": "negative"
+  },
+  {
+    "id": "social_59",
+    "post": "Highway near Navi Mumbai blocked \u2014 containers piling up! #portcongestion",
+    "user": "supplychain_news",
+    "timestamp": "2025-11-06T01:53:16.359315Z",
+    "location": "Mumbai",
+    "carrier": "EcomExpress",
+    "sentiment": "neutral"
+  }
+]

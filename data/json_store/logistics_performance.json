@@ -1,0 +1,69 @@
+[
+  {
+    "carrier_name": "DTDC",
+    "total_shipments": 22,
+    "on_time_delivery_rate_percent": 82.5,
+    "avg_delay_hours": 5.2,
+    "incident_count_last_30d": 11,
+    "top_regions_affected": ["Retail_Delhi", "Port_NaviMumbai"],
+    "common_delay_reasons": [
+      "Vehicle delayed due to traffic",
+      "Heavy rain reported on route",
+      "Awaiting unloading at warehouse",
+      "Driver shift delay"
+    ],
+    "avg_driver_availability_score": 7.5,
+    "last_week_performance_trend": "slightly_declining",
+    "remarks": "High frequency of delays due to driver rotation and congestion on western routes",
+    "rating": "B"
+  },
+  {
+    "carrier_name": "EcomExpress",
+    "total_shipments": 20,
+    "on_time_delivery_rate_percent": 87.3,
+    "avg_delay_hours": 3.8,
+    "incident_count_last_30d": 8,
+    "top_regions_affected": ["WH_Bangalore", "Port_NaviMumbai"],
+    "common_delay_reasons": [
+      "Heavy rain reported on route",
+      "Vehicle delayed due to traffic",
+      "Awaiting unloading at warehouse"
+    ],
+    "avg_driver_availability_score": 8.0,
+    "last_week_performance_trend": "stable",
+    "remarks": "Moderate weather impact, otherwise consistent in South India",
+    "rating": "A-"
+  },
+  {
+    "carrier_name": "Safexpress",
+    "total_shipments": 24,
+    "on_time_delivery_rate_percent": 89.4,
+    "avg_delay_hours": 2.9,
+    "incident_count_last_30d": 6,
+    "top_regions_affected": ["Retail_Delhi", "Port_NaviMumbai"],
+    "common_delay_reasons": [
+      "Driver shift delay",
+      "Awaiting unloading at warehouse"
+    ],
+    "avg_driver_availability_score": 8.4,
+    "last_week_performance_trend": "improving",
+    "remarks": "Good network reliability, minor scheduling issues at urban depots",
+    "rating": "A"
+  },
+  {
+    "carrier_name": "BlueDart",
+    "total_shipments": 18,
+    "on_time_delivery_rate_percent": 91.1,
+    "avg_delay_hours": 2.4,
+    "incident_count_last_30d": 4,
+    "top_regions_affected": ["DC_Mumbai", "Retail_Delhi"],
+    "common_delay_reasons": [
+      "Heavy rain reported on route",
+      "Driver shift delay"
+    ],
+    "avg_driver_availability_score": 9.1,
+    "last_week_performance_trend": "stable",
+    "remarks": "Best performance carrier with low incident ratio; weather is the only major factor",
+    "rating": "A+"
+  }
+]

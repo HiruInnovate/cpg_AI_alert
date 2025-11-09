@@ -1,0 +1,17 @@
+{
+  "banned_phrases": ["guarantee", "will certainly", "no risk"],
+  "min_confidence_for_auto_action": 70,
+  "max_temperature": 0.35,
+  "schema_requirements": {
+    "RCA": ["causes", "confidence"],
+    "RECOMMENDATION": ["recommendations"]
+  },
+  "few_shot_examples": {
+    "RCA": [
+      {
+        "input": "Shipment SHP100 delayed 24h. Context: heavy rain alerts in region",
+        "output": {"causes":[{"label":"Weather", "explanation":"Heavy rains caused road closure", "evidence_ids":["doc_001"]}], "confidence": 85}
+      }
+    ]
+  }
+}

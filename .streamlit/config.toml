@@ -1,0 +1,5 @@
+[server]
+folderWatchBlacklist = ["p"]
+
+[theme]
+base = "dark"
