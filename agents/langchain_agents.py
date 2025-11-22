@@ -8,9 +8,10 @@ import re
 import datetime
 from typing import Dict, Any, Optional
 
+from langchain_classic.agents import initialize_agent, AgentType
+from langchain_core.tools import Tool
 from langchain_openai import ChatOpenAI
-from langchain.agents import initialize_agent, AgentType
-from langchain.tools import Tool
+
 
 # Local services
 from services.logger_config import get_logger

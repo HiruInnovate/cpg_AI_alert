@@ -2,7 +2,8 @@
 import os
 from langchain_chroma import Chroma
 from langchain_openai.embeddings import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 from services.logger_config import get_logger
 
 # Initialize logger

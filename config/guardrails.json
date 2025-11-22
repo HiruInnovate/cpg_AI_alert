@@ -1,17 +1,24 @@
 {
-  "banned_phrases": ["guarantee", "will certainly", "no risk"],
+  "banned_phrases": [
+    "blame vendor",
+    "blame carrier",
+    "blame customer",
+    "cancel all shipments",
+    "ignore delay",
+    "terminate supplier",
+    "fault of region"
+  ],
   "min_confidence_for_auto_action": 70,
-  "max_temperature": 0.35,
-  "schema_requirements": {
-    "RCA": ["causes", "confidence"],
-    "RECOMMENDATION": ["recommendations"]
-  },
-  "few_shot_examples": {
-    "RCA": [
-      {
-        "input": "Shipment SHP100 delayed 24h. Context: heavy rain alerts in region",
-        "output": {"causes":[{"label":"Weather", "explanation":"Heavy rains caused road closure", "evidence_ids":["doc_001"]}], "confidence": 85}
-      }
-    ]
-  }
+  "business_rules": [
+    "Always validate root cause from at least two independent data sources (shipment logs + carrier performance).",
+    "Never recommend cancelling shipments unless explicitly supported by data.",
+    "Always provide at least one mitigation action and one process improvement recommendation.",
+    "Recommendations must be realistic within standard logistics SLAs (<=72 hours ETA).",
+    "Maintain neutrality when identifying causes — do not assign blame to a specific vendor, carrier, or location without verified multi-source evidence.",
+    "Avoid biased or discriminatory language towards any supplier, carrier, region, or workforce group.",
+    "Ensure fairness in recommendations by considering all carriers and vendors equally based on performance metrics and factual data.",
+    "If data is incomplete or ambiguous, clearly indicate uncertainty instead of making assumptions.",
+    "Use objective, data-backed language — replace blame-oriented statements with neutral phrasing such as 'Root cause likely due to...' instead of 'Vendor caused...'.",
+    "All decisions and recommendations must be explainable with supporting data references for audit transparency."
+  ]
 }
