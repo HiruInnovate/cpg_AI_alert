@@ -67,6 +67,7 @@ all_pages = {
     "Admin / Data Integrator": "3_Admin_Data_Integrator.py",
     "Admin / Guardrails": "4_Admin_Guardrails.py",
     "Admin / Metrics (RAGAS)": "5_Admin_Metrics.py",
+    "Chat Assistant": "6_Chat.py",
 }
 
 # ---- Role-based filtering ----
