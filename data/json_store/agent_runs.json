@@ -466,5 +466,325 @@
       "raw": "To mitigate the impact of an expected stockout of 8 days in the North and West regions, consider increasing safety stock, diversifying suppliers, enhancing communication with partners, monitoring demand closely, optimizing logistics, and developing contingency plans for critical items."
     },
     "timestamp": "2025-11-07T14:43:14.436025"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121749006884",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_28380",
+    "input": "{\"alert_id\": \"ALRT_28380\", \"shipment_id\": \"SHP1001\", \"summary\": \"Detected delay for shipment SHP1001 at WH_Bangalore\", \"created_at\": \"2025-11-23T12:17:46.281563\", \"severity\": \"High\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:17:49.006916"
+  },
+  {
+    "run_id": "Impact_20251123121749011404",
+    "agent": "Impact",
+    "alert_id": "ALRT_28380",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.85, \"expected_stockout_days\": 8, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.85,
+      "expected_stockout_days": 8,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:17:49.011427"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121751791699",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_28380",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:17:51.791724"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121754288527",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_11394",
+    "input": "{\"alert_id\": \"ALRT_11394\", \"shipment_id\": \"SHP1006\", \"summary\": \"Detected delay for shipment SHP1006 at Retail_Delhi\", \"created_at\": \"2025-11-23T12:17:51.795427\", \"severity\": \"High\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:17:54.288555"
+  },
+  {
+    "run_id": "Impact_20251123121754293086",
+    "agent": "Impact",
+    "alert_id": "ALRT_11394",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.85, \"expected_stockout_days\": 8, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.85,
+      "expected_stockout_days": 8,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:17:54.293108"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121756800072",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_11394",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:17:56.800095"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121759387409",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_14774",
+    "input": "{\"alert_id\": \"ALRT_14774\", \"shipment_id\": \"SHP1013\", \"summary\": \"Detected delay for shipment SHP1013 at Factory_01\", \"created_at\": \"2025-11-23T12:17:56.804100\", \"severity\": \"High\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:17:59.387439"
+  },
+  {
+    "run_id": "Impact_20251123121759391640",
+    "agent": "Impact",
+    "alert_id": "ALRT_14774",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.85, \"expected_stockout_days\": 8, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.85,
+      "expected_stockout_days": 8,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:17:59.391665"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121801802940",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_14774",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:18:01.802982"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121802219319",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_99099",
+    "input": "{\"alert_id\": \"ALRT_99099\", \"shipment_id\": \"SHP1001\", \"summary\": \"Detected delay for shipment SHP1001 at WH_Bangalore\", \"created_at\": \"2025-11-23T12:17:59.713217\", \"severity\": \"High\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:18:02.219350"
+  },
+  {
+    "run_id": "Impact_20251123121802224370",
+    "agent": "Impact",
+    "alert_id": "ALRT_99099",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.85, \"expected_stockout_days\": 8, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.85,
+      "expected_stockout_days": 8,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:18:02.224403"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121804325385",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_75438",
+    "input": "{\"alert_id\": \"ALRT_75438\", \"shipment_id\": \"SHP1014\", \"summary\": \"Detected delay for shipment SHP1014 at Retail_Delhi\", \"created_at\": \"2025-11-23T12:18:01.807159\", \"severity\": \"Low\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:18:04.325429"
+  },
+  {
+    "run_id": "Impact_20251123121804330293",
+    "agent": "Impact",
+    "alert_id": "ALRT_75438",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.2, \"expected_stockout_days\": 2, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.2,
+      "expected_stockout_days": 2,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:18:04.330313"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121804853729",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_99099",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:18:04.853772"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121806901359",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_75438",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:18:06.901399"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121807369506",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_35486",
+    "input": "{\"alert_id\": \"ALRT_35486\", \"shipment_id\": \"SHP1006\", \"summary\": \"Detected delay for shipment SHP1006 at Retail_Delhi\", \"created_at\": \"2025-11-23T12:18:04.858086\", \"severity\": \"High\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:18:07.369529"
+  },
+  {
+    "run_id": "Impact_20251123121807374295",
+    "agent": "Impact",
+    "alert_id": "ALRT_35486",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.85, \"expected_stockout_days\": 8, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.85,
+      "expected_stockout_days": 8,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:18:07.374313"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121809944603",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_35486",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:18:09.944629"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121812420707",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_41590",
+    "input": "{\"alert_id\": \"ALRT_41590\", \"shipment_id\": \"SHP1008\", \"summary\": \"Detected delay for shipment SHP1008 at Factory_01\", \"created_at\": \"2025-11-23T12:18:09.948845\", \"severity\": \"Medium\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:18:12.420734"
+  },
+  {
+    "run_id": "Impact_20251123121812425497",
+    "agent": "Impact",
+    "alert_id": "ALRT_41590",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.5, \"expected_stockout_days\": 5, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.5,
+      "expected_stockout_days": 5,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:18:12.425517"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121814977592",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_41590",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:18:14.977623"
+  },
+  {
+    "run_id": "RCA_ReAct_20251123121817769805",
+    "agent": "RCA_ReAct",
+    "alert_id": "ALRT_25981",
+    "input": "{\"alert_id\": \"ALRT_25981\", \"shipment_id\": \"SHP1013\", \"summary\": \"Detected delay for shipment SHP1013 at Factory_01\", \"created_at\": \"2025-11-23T12:18:14.982272\", \"severity\": \"High\", \"status\": \"Active\"}",
+    "raw_output": "",
+    "parsed_output": {
+      "rca_json": {},
+      "steps": [],
+      "logs": ""
+    },
+    "timestamp": "2025-11-23T12:18:17.769853"
+  },
+  {
+    "run_id": "Impact_20251123121817775222",
+    "agent": "Impact",
+    "alert_id": "ALRT_25981",
+    "input": "impact_calc",
+    "raw_output": "{\"impact_score\": 0.85, \"expected_stockout_days\": 8, \"affected_regions\": [\"North\", \"West\"]}",
+    "parsed_output": {
+      "impact_score": 0.85,
+      "expected_stockout_days": 8,
+      "affected_regions": [
+        "North",
+        "West"
+      ]
+    },
+    "timestamp": "2025-11-23T12:18:17.775240"
+  },
+  {
+    "run_id": "OrchestratorError_20251123121820344941",
+    "agent": "OrchestratorError",
+    "alert_id": "ALRT_25981",
+    "input": "orchestrate_alert",
+    "raw_output": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}",
+    "parsed_output": {
+      "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}"
+    },
+    "timestamp": "2025-11-23T12:18:20.344962"
   }
 ]

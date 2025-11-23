@@ -9,7 +9,7 @@ def get_logger(name: str):
     if not logger.handlers:
         logger.setLevel(logging.INFO)
         fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
-        fh = RotatingFileHandler(LOG_PATH, maxBytes=1_000_000, backupCount=3)
+        fh = RotatingFileHandler(LOG_PATH, maxBytes=1_000_000, backupCount=3,delay=True)
         fh.setFormatter(fmt)
         ch = logging.StreamHandler()
         ch.setFormatter(fmt)

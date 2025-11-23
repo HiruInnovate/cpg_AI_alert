@@ -1,81 +1,108 @@
-# services/mailer.py
-import json
+"""
+services/mailer.py
+
+Robust SMTP mailer for RCA Email Summary.
+Supports:
+- SMTP with TLS
+- Demo mode (no sending)
+- JSON-based config (config/contacts.json)
+- Rich logging
+"""
+
 import os
+import json
 import ssl
 import smtplib
 from email.message import EmailMessage
 from services.logger_config import get_logger
 
-# Initialize logger
 logger = get_logger(__name__)
 
-CFG_PATH = "config/contacts.json"
+CONFIG_FILE = "config/contacts.json"
+
+
+def _load_config():
+    """Load mail + contact settings."""
+    if not os.path.exists(CONFIG_FILE):
+        logger.error(f"[MAILER] Missing config file: {CONFIG_FILE}")
+        return None
+
+    try:
+        with open(CONFIG_FILE, "r", encoding="utf8") as f:
+            return json.load(f)
+    except Exception as e:
+        logger.error(f"[MAILER] Failed to parse config: {e}", exc_info=True)
+        return None
 
 
 def send_mail(subject: str, body: str):
     """
-    Sends an email using SMTP configuration defined in config/contacts.json.
-    Includes detailed logging for tracing and debugging.
+    Send an email to all contacts defined in config/contacts.json.
+
+    Returns:
+      {
+        "status": "sent" | "mock_sent" | "error",
+        "to": list_of_recipients
+      }
     """
-    logger.info("[MAILER] Preparing to send email alert.")
 
-    # Load configuration
-    if not os.path.exists(CFG_PATH):
-        logger.error(f"[MAILER] Missing configuration file: {CFG_PATH}")
-        return {"status": "error", "message": "Missing contacts.json"}
+    logger.info("[MAILER] Preparing email...")
 
-    try:
-        cfg = json.load(open(CFG_PATH))
-    except Exception as e:
-        logger.error(f"[MAILER] Failed to read mail configuration: {e}", exc_info=True)
-        return {"status": "error", "message": "Invalid mail configuration"}
+    cfg = _load_config()
+    if not cfg:
+        return {"status": "error", "message": "Invalid mail config"}
 
-    smtp = cfg.get("smtp", {})
+    smtp_cfg = cfg.get("smtp", {})
     contacts = cfg.get("contacts", [])
 
-    # Validate recipients
     if not contacts:
-        logger.warning("[MAILER] No recipients found in contacts.json.")
-        return {"status": "no_recipients"}
+        logger.warning("[MAILER] No recipients defined.")
+        return {"status": "no_recipients", "to": []}
 
-    # Demo / Dry-run mode (no actual SMTP call)
+    # Demo safeguard
     if os.environ.get("STREAMLIT_RUNNING_IN_DEMO", "1") == "1":
-        logger.info(f"[MAILER] Running in demo mode — mock sending mail to {len(contacts)} recipients.")
-        return {"status": "mock_sent", "to": contacts, "subject": subject}
+        logger.info(f"[MAILER] Demo mode active — mock send to {len(contacts)} recipients")
+        return {"status": "mock_sent", "to": contacts}
 
-    # Prepare email
+    # Construct email
     try:
         msg = EmailMessage()
-        msg.set_content(body)
-        msg["Subject"] = subject
-        msg["From"] = smtp.get("from", "noreply@example.com")
+        msg["From"] = smtp_cfg.get("from", "noreply@example.com")
         msg["To"] = ", ".join(contacts)
+        msg["Subject"] = subject
+        msg.set_content(body)
+
     except Exception as e:
-        logger.error(f"[MAILER] Error constructing email message: {e}", exc_info=True)
+        logger.error(f"[MAILER] Failed to build email object: {e}", exc_info=True)
         return {"status": "error", "message": "Failed to build email"}
 
-    # Establish connection and send
+    # Send via SMTP
     try:
-        logger.info(f"[MAILER] Connecting to SMTP server: {smtp.get('host')}:{smtp.get('port')}")
+        logger.info(
+            f"[MAILER] Connecting to SMTP {smtp_cfg.get('host')}:{smtp_cfg.get('port')}"
+        )
+
         context = ssl.create_default_context()
 
-        with smtplib.SMTP(smtp.get("host"), smtp.get("port")) as s:
-            if smtp.get("use_tls", True):
-                s.starttls(context=context)
-                logger.debug("[MAILER] TLS connection established successfully.")
+        with smtplib.SMTP(smtp_cfg.get("host"), smtp_cfg.get("port")) as server:
 
-            if smtp.get("username"):
-                logger.debug(f"[MAILER] Authenticating as {smtp.get('username')}")
-                s.login(smtp.get("username"), smtp.get("password"))
+            if smtp_cfg.get("use_tls", True):
+                server.starttls(context=context)
+                logger.info("[MAILER] TLS session established")
 
-            s.send_message(msg)
+            if smtp_cfg.get("username"):
+                logger.info("[MAILER] Authenticating...")
+                server.login(smtp_cfg.get("username"), smtp_cfg.get("password"))
 
-        logger.info(f"[MAILER] Email successfully sent to {len(contacts)} recipients.")
+            server.send_message(msg)
+
+        logger.info(f"[MAILER] Email sent to {len(contacts)} recipients")
         return {"status": "sent", "to": contacts}
 
     except smtplib.SMTPException as e:
-        logger.error(f"[MAILER] SMTP error during send: {e}", exc_info=True)
-        return {"status": "error", "message": f"SMTP error: {str(e)}"}
+        logger.error(f"[MAILER] SMTP error: {e}", exc_info=True)
+        return {"status": "error", "message": f"SMTP error: {e}"}
+
     except Exception as e:
-        logger.error(f"[MAILER] Unexpected error during email send: {e}", exc_info=True)
+        logger.error(f"[MAILER] Unexpected error: {e}", exc_info=True)
         return {"status": "error", "message": str(e)}
