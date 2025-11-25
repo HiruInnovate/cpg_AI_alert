@@ -23,3 +23,5 @@ python-multipart
 deepeval
 sentence-transformers
 torch
+
+FPDF

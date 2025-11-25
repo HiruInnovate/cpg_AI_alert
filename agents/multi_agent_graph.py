@@ -3,75 +3,26 @@ from datetime import datetime
 from typing import Any, Dict, List, Union, Optional
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain.tools import tool
 from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import Tool, render_text_description
 from langchain_core.agents import AgentFinish, AgentAction
 from langchain_classic.agents.format_scratchpad import format_log_to_str
 from langchain_classic.agents.output_parsers import ReActSingleInputOutputParser
 
-from services.llm_factory import create_embedding_model, create_chat_model
 from services.logger_config import get_logger
-from langchain.tools import tool
-import httpx, re
 
 # Load environment & logger
 load_dotenv()
 logger = get_logger(__name__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-CONFIG_PATH = os.path.join(BASE_DIR, "config", "guardrails.json")   # 👈 Guardrail config
+CONFIG_PATH = os.path.join(BASE_DIR, "config", "guardrails.json")  # 👈 Guardrail config
 SHIPMENTS_PATH = os.path.join(BASE_DIR, "data/json_store/shipments.json")
 LOGISTICS_PATH = os.path.join(BASE_DIR, "data/json_store/logistics_performance.json")
 CHROMA_DIR = os.path.join(BASE_DIR, "data/vector_db")
 RAGAS_STORE = os.path.join(BASE_DIR, "data/json_store/agent_ragas_records.json")
 
-# Utility to record agent runs
-def record_agent_run_for_ragas(agent_name, alert, question, contexts, answer):
-    try:
-        os.makedirs(os.path.dirname(RAGAS_STORE), exist_ok=True)
-        data = json.load(open(RAGAS_STORE, "r", encoding="utf8")) if os.path.exists(RAGAS_STORE) else []
-        data.append({
-            "timestamp": datetime.now().isoformat(),
-            "agent_name": agent_name,
-            "alert_id": alert.get("alert_id"),
-            "question": question,
-            "contexts": contexts,
-            "generated_answer": answer
-        })
-        json.dump(data, open(RAGAS_STORE, "w"), indent=2)
-        logger.info(f"[RAGAS_RECORD] Logged {agent_name} for alert {alert.get('alert_id')}")
-    except Exception as e:
-        logger.error(f"[RAGAS_RECORD] Error saving: {e}", exc_info=True)
-
-
-# ---------------------------
-# Load Guardrails Dynamically
-# ---------------------------
-def load_guardrails() -> Dict[str, Any]:
-    """Load configurable guardrails."""
-    try:
-        if os.path.exists(CONFIG_PATH):
-            with open(CONFIG_PATH, "r", encoding="utf8") as f:
-                guard = json.load(f)
-            return guard
-        else:
-            logger.warning("[GUARDRAIL] Missing config, loading defaults")
-            return {
-                "banned_phrases": ["blame vendor", "ignore delay"],
-                "min_confidence_for_auto_action": 70,
-                "business_rules": [
-                    "Ensure recommendations are grounded in shipment or logistics data.",
-                    "Never hallucinate unsupported causes."
-                ]
-            }
-    except Exception as e:
-        logger.error(f"[GUARDRAIL] Load failed: {e}")
-        return {}
-
-
-# -----------------------
-# Tools (langchain @tool decorated callables)
-# -----------------------
 
 @tool
 def get_shipment_details(shipment_id: str) -> str:
@@ -228,8 +179,7 @@ def search_external_context(query: str) -> str:
                 logger.error("[TOOL][search_external_context] Chroma import failed", exc_info=True)
                 return f"ERROR: Chroma not available ({e})"
 
-        # emb = OpenAIEmbeddings(model="text-embedding-3-small")
-        emb = create_embedding_model()
+        emb = OpenAIEmbeddings(model="text-embedding-3-small")
         namespaces = ["news_data", "social_data", "logistics_data", "misc_data"]
         results = []
         for ns in namespaces:
@@ -257,163 +207,3 @@ def search_external_context(query: str) -> str:
         return f"ERROR: {e}"
 
 
-# -----------------------
-# Utility: find tool by name (used by the ReAct loop)
-# -----------------------
-def find_tool_by_name(tools: List[Tool], tool_name: str) -> Tool:
-    for tool in tools:
-        if tool.name == tool_name:
-            return tool
-    raise ValueError(f"Tool with name '{tool_name}' not found")
-
-
-
-
-
-
-
-# ---------------------------
-# Build RCA Agent
-# ---------------------------
-def build_rca_agent_instance(tools: List[Tool], llm_model="gpt-4o-mini", temperature=0.2):
-    guard = load_guardrails()  # 👈 Inject latest configuration
-
-    guardrail_prompt = f"""
-⚙️ **Supply Chain Guardrails & Compliance:**
-- Minimum confidence for recommendations: {guard.get('min_confidence_for_auto_action', 70)}%
-- Banned phrases: {', '.join(guard.get('banned_phrases', []))}
-- Business rules:
-  {"; ".join(guard.get('business_rules', []))}
-
-Ensure all reasoning, causes, and recommendations strictly comply with these guardrails.
-If an action violates a rule, explicitly mention "⚠️ REJECTED_BY_GUARDRAIL" and propose an alternative.
-"""
-
-    # Updated ReAct prompt
-    template = """
-    You are a Supply Chain Root Cause Analysis (RCA) expert.
-    You are investigating an alert about shipment disruption.
-
-    You have access to the following tools:
-    {tools}
-
-    {guardrail_prompt}
-    When you use a tool, please follow this format:
-
-    Question: the input alert details or question
-    Thought: think about what to check next
-    Action: one of [{tool_names}]
-    Action Input: the input to the tool
-    Observation: result of the tool
-    ... (repeat Thought/Action/Action Input/Observation as required)
-    Thought: I now know the root cause
-    Final Answer: Provide an elaborate answer in a JSON object with keys:
-      - causes: list of {{label, explanation}}
-      - confidence: float (0-1)
-      - summary: brief 1-2 line summary
-      - recommendations: list of suggested actions {{id, action, eta_hours, confidence_est}}
-      - evidence: list of references (snippet identifiers or short quotes)
-
-    Be thorough and ground reasoning to the tool observations.
-
-    Begin!
-
-    Question: {input}
-    Thought: {agent_scratchpad}
-    """
-
-    prompt = PromptTemplate.from_template(template=template).partial(
-        tools=render_text_description(tools),
-        guardrail_prompt= guardrail_prompt,
-        tool_names=", ".join([t.name for t in tools])
-    )
-
-    # llm = ChatOpenAI(
-    #     model=llm_model,
-    #     temperature=temperature,
-    #     stop=["\nObservation", "Observation"],
-    #     http_client=httpx.Client(verify=False)
-    # )
-    llm = create_chat_model(temperature=0.1, is_agent=True)
-
-    return (
-        {
-            "input": lambda x: x["input"],
-            "agent_scratchpad": lambda x: format_log_to_str(x["agent_scratchpad"]),
-        }
-        | prompt
-        | llm
-        | ReActSingleInputOutputParser()
-    )
-
-
-# ---------------------------
-# RCA Runner
-# ---------------------------
-def run_rca_agent(alert: Dict[str, Any], max_steps=8, llm_model="gpt-4o-mini", temperature=0.2, tools=None):
-    """Main RCA run loop with guardrail injection."""
-
-    run_trace, agent_scratchpad, retrieved_contexts = [], [], []
-    final_text, final_json, raw_agent_return = "", None, None
-    tools = tools or [get_shipment_details, get_logistics_performance, search_external_context]
-
-    try:
-        agent = build_rca_agent_instance(tools, llm_model=llm_model, temperature=temperature)
-        question = f"What is the cause of this alert and recommendations to mitigate? {json.dumps(alert)}"
-
-        steps = 0
-        while steps < max_steps:
-            agent_step = agent.invoke({"input": question, "agent_scratchpad": agent_scratchpad})
-            if isinstance(agent_step, AgentAction):
-                tool_name, tool_input = agent_step.tool, agent_step.tool_input
-                try:
-                    tool_obj = next(t for t in tools if t.name == tool_name)
-                    observation = tool_obj.func(str(tool_input))
-                except Exception as e:
-                    observation = f"ERROR: {e}"
-
-                run_trace.append({
-                    "step": steps + 1,
-                    "tool": tool_name,
-                    "tool_input": tool_input,
-                    "observation": observation
-                })
-                agent_scratchpad.append((agent_step, observation))
-                retrieved_contexts.append(str(observation))
-                steps += 1
-                continue
-
-            if isinstance(agent_step, AgentFinish):
-                final_text = agent_step.return_values.get("output", "")
-                try:
-                    match = re.search(r'(\{.*\}|\[.*\])', final_text, re.DOTALL)
-                    if match:
-                        final_json = json.loads(match.group(0))
-                except Exception:
-                    pass
-
-                record_agent_run_for_ragas(
-                    agent_name="RCA_Agent",
-                    alert=alert,
-                    question=question,
-                    contexts=retrieved_contexts,
-                    answer=final_text
-                )
-                return {
-                    "steps": run_trace,
-                    "final_answer": final_text,
-                    "final_json": final_json,
-                    "logs": format_log_to_str(agent_scratchpad)
-                }
-
-        return {
-            "steps": run_trace,
-            "final_answer": final_text,
-            "final_json": final_json,
-            "logs": format_log_to_str(agent_scratchpad),
-            "note": "max_steps_reached"
-        }
-
-    except Exception as e:
-        logger.error(f"[RCA_AGENT] Error: {e}")
-        return {"error": str(e), "steps": run_trace, "logs": format_log_to_str(agent_scratchpad)}

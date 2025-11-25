@@ -1,0 +1,51 @@
+[
+  {
+    "shipment_id": "SHP1000",
+    "skus": ["PROD_A100"],
+    "dest_node": "Retail_Delhi",
+    "dependent_orders": [
+      {
+        "order_id": "ORD-5001",
+        "sku": "PROD_A100",
+        "qty": 120,
+        "required_by": "2025-11-08",
+        "customer_tier": "Gold"
+      },
+      {
+        "order_id": "ORD-5002",
+        "sku": "PROD_A100",
+        "qty": 80,
+        "required_by": "2025-11-09",
+        "customer_tier": "Silver"
+      }
+    ]
+  },
+  {
+    "shipment_id": "SHP1001",
+    "skus": ["PROD_D400"],
+    "dest_node": "Retail_Bangalore",
+    "dependent_orders": [
+      {
+        "order_id": "ORD-5003",
+        "sku": "PROD_D400",
+        "qty": 150,
+        "required_by": "2025-11-07",
+        "customer_tier": "Gold"
+      }
+    ]
+  },
+  {
+    "shipment_id": "SHP1002",
+    "skus": ["PROD_C300"],
+    "dest_node": "Retail_Mumbai",
+    "dependent_orders": [
+      {
+        "order_id": "ORD-5004",
+        "sku": "PROD_C300",
+        "qty": 100,
+        "required_by": "2025-11-09",
+        "customer_tier": "Standard"
+      }
+    ]
+  }
+]

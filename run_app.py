@@ -64,6 +64,7 @@ st.sidebar.markdown('<core class="sidebar-title">🚛 CPG Supply Chain AI</core>
 all_pages = {
     "Dashboard": "1_Dashboard.py",
     "Alerts": "2_Alerts.py",
+    "Impact Assessment": "2_b_Impact_Assessment.py",
     "Admin / Data Integrator": "3_Admin_Data_Integrator.py",
     "Admin / Guardrails": "4_Admin_Guardrails.py",
     "Admin / Metrics (RAGAS)": "5_Admin_Metrics.py",

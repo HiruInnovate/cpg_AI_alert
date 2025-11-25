@@ -98,7 +98,7 @@ else:
             conf = final_json.get("confidence", 0)
             st.markdown("#### 🎯 Confidence Level")
             st.progress(min(max(float(conf), 0), 1))
-            st.caption(f"{conf * 100:.1f}% confidence in this RCA conclusion.")
+            st.caption(f"{conf * 100}% confidence in this RCA conclusion.")
 
             # Root Causes
             causes = final_json.get("causes", [])

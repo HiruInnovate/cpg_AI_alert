@@ -1,0 +1,5 @@
+[
+  {"route": "Factory_01->Retail_Delhi", "standard_rate_per_kg": 8.0, "expedite_multiplier": 1.8},
+  {"route": "WH_Bangalore->Retail_Bangalore", "standard_rate_per_kg": 6.5, "expedite_multiplier": 1.7},
+  {"route": "Port_NaviMumbai->Retail_Mumbai", "standard_rate_per_kg": 7.5, "expedite_multiplier": 1.6}
+]

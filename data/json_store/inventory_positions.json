@@ -1,0 +1,6 @@
+
+[
+  {"location": "Factory_01", "sku": "PROD_A100", "on_hand": 300, "reserved": 180, "safety_stock": 80, "replenishment_eta_hours": 48},
+  {"location": "WH_Bangalore", "sku": "PROD_D400", "on_hand": 250, "reserved": 120, "safety_stock": 100, "replenishment_eta_hours": 36},
+  {"location": "Port_NaviMumbai", "sku": "PROD_C300", "on_hand": 400, "reserved": 200, "safety_stock": 90, "replenishment_eta_hours": 24}
+]

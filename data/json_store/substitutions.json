@@ -1,0 +1,5 @@
+[
+  {"sku": "PROD_A100", "alternates": [{"sku": "PROD_B200", "sub_ratio": 0.9}, {"sku": "PROD_C300", "sub_ratio": 0.75}]},
+  {"sku": "PROD_D400", "alternates": [{"sku": "PROD_B200", "sub_ratio": 0.8}, {"sku": "PROD_C300", "sub_ratio": 0.7}]},
+  {"sku": "PROD_C300", "alternates": [{"sku": "PROD_B200", "sub_ratio": 0.85}, {"sku": "PROD_D400", "sub_ratio": 0.8}]}
+]

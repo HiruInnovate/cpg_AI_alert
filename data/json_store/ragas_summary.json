@@ -96,5 +96,12 @@
     "faithfulness": 0.15,
     "context_precision": 0.778,
     "answer_relevancy": 0.591
+  },
+  {
+    "timestamp": "2025-11-23T21:47:46.489407",
+    "agent_name": "Impact_Agent",
+    "faithfulness": 0.192,
+    "context_precision": 0.0,
+    "answer_relevancy": 0.0
   }
 ]

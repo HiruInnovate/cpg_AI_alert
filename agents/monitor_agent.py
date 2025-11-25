@@ -2,7 +2,7 @@
 import random
 import datetime
 from services.storage import load_json, append_json
-from agents.langchain_agents import orchestrate_alert
+# from agents.langchain_agents import orchestrate_alert
 from services.logger_config import get_logger
 
 # Initialize logger
@@ -51,12 +51,12 @@ def run_monitor_and_orchestrate(max_events=20, verbose=False):
                 logger.info(f"[MONITOR] Created new alert {alert['alert_id']} | Severity: {severity} | Shipment: {shipment_id}")
 
                 # Run orchestration for this alert
-                logger.info(f"[MONITOR] Starting orchestration for alert {alert['alert_id']}.")
-                try:
-                    orchestrate_alert(alert, verbose=verbose)
-                    logger.info(f"[MONITOR] Completed orchestration for alert {alert['alert_id']}.")
-                except Exception as e:
-                    logger.error(f"[MONITOR] Orchestration failed for alert {alert['alert_id']}: {e}", exc_info=True)
+                # logger.info(f"[MONITOR] Starting orchestration for alert {alert['alert_id']}.")
+                # try:
+                #     orchestrate_alert(alert, verbose=verbose)
+                #     logger.info(f"[MONITOR] Completed orchestration for alert {alert['alert_id']}.")
+                # except Exception as e:
+                #     logger.error(f"[MONITOR] Orchestration failed for alert {alert['alert_id']}: {e}", exc_info=True)
             else:
                 logger.debug(f"[MONITOR] No disruption detected for shipment {shipment_id}.")
         except Exception as e:

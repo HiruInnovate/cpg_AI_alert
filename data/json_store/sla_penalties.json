@@ -1,0 +1,9 @@
+{
+  "tiers": {
+    "Gold": {"late_penalty_pct": 0.05},
+    "Silver": {"late_penalty_pct": 0.03},
+    "Standard": {"late_penalty_pct": 0.01}
+  },
+  "stockout_cost_per_unit": 40.0,
+  "cancellation_penalty_pct": 0.1
+}

@@ -1,0 +1,6 @@
+[
+  {"order_id": "ORD-5001", "customer_id": "CUST-DEL-01", "customer_tier": "Gold", "sku": "PROD_A100", "qty": 120, "required_by": "2025-11-08", "sla_days": 2, "region": "Delhi"},
+  {"order_id": "ORD-5002", "customer_id": "CUST-DEL-02", "customer_tier": "Silver", "sku": "PROD_A100", "qty": 80, "required_by": "2025-11-09", "sla_days": 3, "region": "Delhi"},
+  {"order_id": "ORD-5003", "customer_id": "CUST-BLR-01", "customer_tier": "Gold", "sku": "PROD_D400", "qty": 150, "required_by": "2025-11-07", "sla_days": 1, "region": "Bangalore"},
+  {"order_id": "ORD-5004", "customer_id": "CUST-MUM-01", "customer_tier": "Standard", "sku": "PROD_C300", "qty": 100, "required_by": "2025-11-09", "sla_days": 2, "region": "Mumbai"}
+]

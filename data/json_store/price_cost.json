@@ -1,0 +1,5 @@
+[
+  {"sku": "PROD_A100", "uom": "EA", "sell_price": 200, "unit_cost": 120, "contrib_margin": 80},
+  {"sku": "PROD_D400", "uom": "EA", "sell_price": 250, "unit_cost": 150, "contrib_margin": 100},
+  {"sku": "PROD_C300", "uom": "EA", "sell_price": 180, "unit_cost": 110, "contrib_margin": 70}
+]
