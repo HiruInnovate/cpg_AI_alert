@@ -1,4 +1,5 @@
 
+import os
 from langchain_classic.agents.format_scratchpad import format_log_to_str
 from langchain_classic.agents.output_parsers import ReActSingleInputOutputParser
 from langchain_core.prompts import PromptTemplate
@@ -10,6 +11,8 @@ from services.llm_factory import create_chat_model
 from services.logger_config import get_logger
 from util.guardrail_util import load_guardrails
 import json as js
+
+LLM_NAME = os.getenv("AZURE_CHAT_MODEL")
 
 logger = get_logger(__name__)
 
@@ -150,7 +153,7 @@ Follow these strict steps and rules while reasoning:
         Action Input: the input to the tool
         Observation: result of the tool
         ... (repeat Thought/Action/Action Input/Observation as required)
-        Thought: I now know the root cause
+        Thought: I now know the Imapct of the alert issue
         Final Answer: A JSON object only in the format below ::
         JSON structure:
         {{
@@ -184,7 +187,7 @@ Follow these strict steps and rules while reasoning:
 
        
         Rules:
-        - You must always produce FINAL ANSWER in  a valid JSON object matching the above schema.
+        - You must always produce Final Answer in  a valid JSON object matching the above schema.
         - Do not include Markdown, text commentary, or any extra output.
         - Ground every conclusion in tool outputs or given context.
         - If insufficient data, set numeric values to 0 and explain assumptions.
@@ -193,6 +196,9 @@ Follow these strict steps and rules while reasoning:
     Do not hallucinate, if you dont get correct appropriate context.
     Be explicit in assumptions. Use substitutions, buffers, SLA tiers where possible.
     Be thorough and ground reasoning to the tool observations.
+
+    When you are done, strictly end your reasoning and print exactly:
+    Final Answer: (followed immediately by valid JSON only — no markdown, no commentary, no prose)
 
         Begin!
 
@@ -205,7 +211,7 @@ Follow these strict steps and rules while reasoning:
         tool_names=", ".join([t.name for t in tools]),
     )
     # llm = ChatOpenAI(model=model, temperature=temperature, stop=["\nObservation", "Observation"])
-    llm = create_chat_model(is_agent=True)
+    llm = create_chat_model(model=LLM_NAME, is_agent=True)
     return (
             {"input": lambda x: x["input"], "agent_scratchpad": lambda x: format_log_to_str(x["agent_scratchpad"])}
             | prompt | llm | ReActSingleInputOutputParser()

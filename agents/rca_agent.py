@@ -25,6 +25,8 @@ LOGISTICS_PATH = os.path.join(BASE_DIR, "data/json_store/logistics_performance.j
 CHROMA_DIR = os.path.join(BASE_DIR, "data/vector_db")
 RAGAS_STORE = os.path.join(BASE_DIR, "data/json_store/agent_ragas_records.json")
 
+LLM_NAME = os.getenv("AZURE_CHAT_MODEL")
+
 # Utility to record agent runs
 def record_agent_run_for_ragas(agent_name, alert, question, contexts, answer):
     try:
@@ -209,52 +211,59 @@ def search_external_context(query: str) -> str:
     Tool: search_external_context(query)
 
     Purpose:
-        Search vector DB namespaces 'news_data' and 'social_data' for relevant snippets.
+        Search vector DB namespaces ('news_data', 'social_data', etc.) for relevant snippets.
     Input:
         query (str) - natural language query
     Output:
-        newline-separated list of "[namespace:source] snippet..." strings, or "NO_RELEVANT_CONTEXT_FOUND" / error
+        newline-separated list of "[namespace:source] snippet..." strings,
+        or "NO_RELEVANT_CONTEXT_FOUND" / error
     """
     try:
         logger.info(f"[TOOL][search_external_context] Running vector search for query: {query[:120]}")
-        # Import Chroma at runtime to avoid import-time dependency issues
-        try:
-            from langchain_chroma import Chroma
-        except Exception:
-            # fallback: try langchain.vectorstores.Chroma if older langchain installed
-            try:
-                from langchain_chroma.vectorstores import Chroma
-            except Exception as e:
-                logger.error("[TOOL][search_external_context] Chroma import failed", exc_info=True)
-                return f"ERROR: Chroma not available ({e})"
 
-        # emb = OpenAIEmbeddings(model="text-embedding-3-small")
-        emb = create_embedding_model()
+        from langchain_chroma import Chroma
+        from services.llm_factory import create_embedding_model
+
+        emb = create_embedding_model()  # ✅ uses your Azure/OpenAI factory
         namespaces = ["news_data", "social_data", "logistics_data", "misc_data"]
         results = []
+
         for ns in namespaces:
             try:
-                vectordb = Chroma(persist_directory=CHROMA_DIR, embedding_function=emb, collection_name=ns)
+                vectordb = Chroma(
+                    persist_directory="data/vector_db",
+                    embedding_function=emb,
+                    collection_name=ns
+                )
                 retriever = vectordb.as_retriever(search_kwargs={"k": 3})
-                docs = retriever.get_relevant_documents(query)
+
+                # ✅ Support both old (.get_relevant_documents) and new (.invoke)
+                if hasattr(retriever, "get_relevant_documents"):
+                    docs = retriever.get_relevant_documents(query)
+                else:
+                    docs = retriever.invoke(query)
+
                 for d in docs:
                     snippet = (d.page_content or "")[:600].replace("\n", " ")
-                    src = d.metadata.get("source", d.metadata.get("source_id", "unknown")) if getattr(d, "metadata",
-                                                                                                      None) else "unknown"
+                    src = d.metadata.get("source", d.metadata.get("source_id", "unknown")) \
+                        if getattr(d, "metadata", None) else "unknown"
                     results.append(f"[{ns}:{src}] {snippet}")
+
             except Exception as e_ns:
                 logger.warning(f"[TOOL][search_external_context] Namespace '{ns}' search error: {e_ns}")
-                # continue to next namespace
                 continue
 
         if not results:
             logger.info("[TOOL][search_external_context] No relevant context found")
             return "NO_RELEVANT_CONTEXT_FOUND"
+
         logger.debug(f"[TOOL][search_external_context] Retrieved {len(results)} snippets")
         return "\n".join(results)
+
     except Exception as e:
         logger.error(f"[TOOL][search_external_context] Error: {e}", exc_info=True)
         return f"ERROR: {e}"
+
 
 
 # -----------------------
@@ -266,16 +275,10 @@ def find_tool_by_name(tools: List[Tool], tool_name: str) -> Tool:
             return tool
     raise ValueError(f"Tool with name '{tool_name}' not found")
 
-
-
-
-
-
-
 # ---------------------------
 # Build RCA Agent
 # ---------------------------
-def build_rca_agent_instance(tools: List[Tool], llm_model="gpt-4o-mini", temperature=0.2):
+def build_rca_agent_instance(tools: List[Tool], llm_model=LLM_NAME, temperature=0.2):
     guard = load_guardrails()  # 👈 Inject latest configuration
 
     guardrail_prompt = f"""
@@ -328,13 +331,7 @@ If an action violates a rule, explicitly mention "⚠️ REJECTED_BY_GUARDRAIL" 
         tool_names=", ".join([t.name for t in tools])
     )
 
-    # llm = ChatOpenAI(
-    #     model=llm_model,
-    #     temperature=temperature,
-    #     stop=["\nObservation", "Observation"],
-    #     http_client=httpx.Client(verify=False)
-    # )
-    llm = create_chat_model(temperature=0.1, is_agent=True)
+    llm = create_chat_model(model=LLM_NAME,temperature=0.1, is_agent=True)
 
     return (
         {
@@ -350,7 +347,7 @@ If an action violates a rule, explicitly mention "⚠️ REJECTED_BY_GUARDRAIL" 
 # ---------------------------
 # RCA Runner
 # ---------------------------
-def run_rca_agent(alert: Dict[str, Any], max_steps=8, llm_model="gpt-4o-mini", temperature=0.2, tools=None):
+def run_rca_agent(alert: Dict[str, Any], max_steps=8, llm_model=LLM_NAME, temperature=0.2, tools=None):
     """Main RCA run loop with guardrail injection."""
 
     run_trace, agent_scratchpad, retrieved_contexts = [], [], []

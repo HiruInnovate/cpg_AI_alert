@@ -1,18 +1,65 @@
-import logging, os
+import logging
+import os
 from logging.handlers import RotatingFileHandler
+import sys
 
-os.makedirs("logs", exist_ok=True)
-LOG_PATH = "logs/app.log"
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_PATH = os.path.join(LOG_DIR, "app.log")
 
-def get_logger(name: str):
+
+class SafeRotatingFileHandler(RotatingFileHandler):
+    """Windows-safe rotating file handler that gracefully handles file-in-use errors."""
+
+    def doRollover(self):
+        try:
+            super().doRollover()
+        except PermissionError:
+            import shutil
+            backup = f"{self.baseFilename}.1"
+            try:
+                # Fallback: copy & truncate if rename fails (Windows file lock)
+                shutil.copy(self.baseFilename, backup)
+                open(self.baseFilename, 'w').close()
+                print(f"[LOGGER] Fallback rollover: {backup}")
+            except Exception as e:
+                print(f"[LOGGER] Rollover failed: {e}")
+
+
+def get_logger(name: str) -> logging.Logger:
+    """
+    Create or retrieve a logger instance with:
+      - Windows-safe log rotation
+      - Console + file handlers
+      - Prevents duplicate handlers on Streamlit reload
+    """
     logger = logging.getLogger(name)
-    if not logger.handlers:
-        logger.setLevel(logging.INFO)
-        fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
-        fh = RotatingFileHandler(LOG_PATH, maxBytes=1_000_000, backupCount=3)
-        fh.setFormatter(fmt)
-        ch = logging.StreamHandler()
-        ch.setFormatter(fmt)
-        logger.addHandler(fh)
-        logger.addHandler(ch)
+
+    # Avoid duplicate handlers (important for Streamlit hot-reload)
+    if logger.handlers:
+        return logger
+
+    logger.setLevel(logging.INFO)
+    fmt = logging.Formatter("%(asctime)s | %(levelname)s | %(name)s | %(message)s")
+
+    # ---- File Handler ----
+    file_handler = SafeRotatingFileHandler(
+        LOG_PATH,
+        maxBytes=1_000_000,  # 1 MB
+        backupCount=3,
+        delay=True,          # Delay open until first log write (reduces lock risk)
+        encoding="utf-8"
+    )
+    file_handler.setFormatter(fmt)
+    logger.addHandler(file_handler)
+
+    # ---- Console Handler ----
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setFormatter(fmt)
+    logger.addHandler(console_handler)
+
+    # ---- Propagation ----
+    logger.propagate = False
+
+    logger.info(f"✅ Logger initialized for [{name}] at {LOG_PATH}")
     return logger

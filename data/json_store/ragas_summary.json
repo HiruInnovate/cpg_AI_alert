@@ -103,5 +103,68 @@
     "faithfulness": 0.192,
     "context_precision": 0.0,
     "answer_relevancy": 0.0
+  },
+  {
+    "timestamp": "2025-11-26T20:13:13.821529",
+    "agent_name": "RCA_Agent",
+    "faithfulness": NaN,
+    "context_precision": NaN,
+    "answer_relevancy": NaN
+  },
+  {
+    "timestamp": "2025-11-26T20:16:55.023892",
+    "agent_name": "RCA_Agent",
+    "faithfulness": NaN,
+    "context_precision": NaN,
+    "answer_relevancy": NaN
+  },
+  {
+    "timestamp": "2025-11-26T20:20:24.202843",
+    "agent_name": "RCA_Agent",
+    "faithfulness": NaN,
+    "context_precision": NaN,
+    "answer_relevancy": NaN
+  },
+  {
+    "timestamp": "2025-11-26T20:26:48.405788",
+    "agent_name": "RCA_Agent",
+    "faithfulness": 0.65,
+    "context_precision": 0.7,
+    "answer_relevancy": 0.68
+  },
+  {
+    "timestamp": "2025-11-26T20:28:59.615686",
+    "agent_name": "RCA_Agent",
+    "faithfulness": 0.65,
+    "context_precision": 0.7,
+    "answer_relevancy": 0.68
+  },
+  {
+    "timestamp": "2025-11-26T20:51:45.019163",
+    "agent_name": "RCA_Agent",
+    "faithfulness": NaN,
+    "context_precision": NaN,
+    "answer_relevancy": NaN
+  },
+  {
+    "timestamp": "2025-11-26T20:54:17.433664",
+    "agent_name": "RCA_Agent",
+    "faithfulness": NaN,
+    "context_precision": NaN,
+    "answer_relevancy": NaN
+  },
+  {
+    "timestamp": "2025-11-26T20:55:53.685669",
+    "agent_name": "RCA_Agent",
+    "faithfulness": NaN,
+    "context_precision": NaN,
+    "answer_relevancy": NaN
+  },
+  {
+    "timestamp": "2025-11-26T20:58:50.913297",
+    "agent_name": "RCA_Agent",
+    "faithfulness": 0.65,
+    "context_precision": 0.7,
+    "answer_relevancy": 0.68
   }
 ]

@@ -1,8 +1,12 @@
 import os
+
 import httpx
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from services.logger_config import get_logger
+
+client = httpx.Client(verify=False)
+
 
 # -------------------------------------------------
 #  LOAD ENV AND LOGGER
@@ -65,7 +69,8 @@ def create_chat_model(model: str = 'gpt-4o-mini', temperature: float = 0.2, clie
         model=model_name,
         api_key=api_key,
         temperature=temperature,
-        http_client=client or httpx.Client(verify=False)
+        http_client=client or httpx.Client(verify=False),
+        max_tokens=2048
     )
 
 
@@ -95,7 +100,8 @@ def create_embedding_model(model: str = None):
     return OpenAIEmbeddings(
         base_url=base_url,
         model=model_name,
-        api_key=api_key
+        api_key=api_key,
+        http_client=client
     )
 
 

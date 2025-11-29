@@ -3,6 +3,9 @@ from langchain_chroma import Chroma
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from services.logger_config import get_logger
+import httpx
+
+client = httpx.Client(verify=False)
 
 # Initialize logger
 logger = get_logger(__name__)
@@ -50,7 +53,8 @@ def create_embedding_model():
         return OpenAIEmbeddings(
             base_url=base_url,
             model=model,
-            api_key=api_key
+            api_key=api_key,
+            http_client=client
         )
     except Exception as e:
         logger.error(f"[EMBEDDINGS] Failed to initialize embeddings: {e}")
